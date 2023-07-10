@@ -1,0 +1,132 @@
+<app-navbar></app-navbar>
+<body>
+    
+
+<div class="container search">
+    <div class="input-group mb-3 search"> <input name="search" id="search" [(ngModel)]="search" type="text" class="form-control" placeholder="Search..">
+        <div class="input-group-append"><button class="btn btn-primary"><i class="bi bi-search"></i></button></div>
+      </div>
+</div>
+
+<div class="container table-responsive">
+    <div *ngIf="show===true || update===true">
+        <button (click)="goBack()"  class="btn btn-outline-info float-right">Go Back</button>
+    </div>
+        <table  *ngIf="users && allUser===true" class="table  table-bordered table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr >
+                        
+                        <th>User Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of users | filter:search">
+                    
+                        <th class="username">{{u.userName}}</th>
+                        <th>
+                            <button (click)='remove(u.userId)' type="button" class="btn btn-outline-danger space">Delete</button>
+                            <button (click)='detail(u.userId)' type="button" class="btn btn-outline-info space">Detail</button>
+                            <button (click)='updateButton(u.userId)' *ngIf="userId" type="button" class="btn btn-outline-primary space">Edit</button>
+                        </th>
+                    </tr>
+                </tbody>
+                
+        </table>
+        
+        
+<div *ngIf="show===true" class="table-responsive">
+    <table class="table  table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                
+                <th scope="col">User Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Role</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <th scope="row">{{user.userName}}</th>
+                <th scope="row">{{user.email}}</th>
+                <th scope="row">{{user.password}}</th>
+                <th scope="row">{{user.role}}</th>
+                <th scope="row">{{user.mobile}}</th>
+                <th scope="row">{{user.address}}</th>
+            </tr>
+        </tbody>
+</table>
+</div>
+
+<div *ngIf="update===true">
+    <h2>Update Details</h2>
+    <form [formGroup]="addForm" (ngSubmit)="edituser()">
+    <div class="form-group">
+        <label for="userName">User Name</label>
+        <input type="text" formControlName="userName" class="form-control" id="userName" [(ngModel)]="user.userName" name="userName">
+        <div class="text-danger" *ngIf=" Submitted && addForm.controls['userName'].errors">
+            <div class="text-danger" *ngIf=" addForm.controls['userName'].errors?.required" class="error">provide UserName</div>
+            <div class="text-danger" *ngIf="  addForm.controls['userName'].errors?.minlength" class="error">Give minimum length</div>
+            <div class="text-danger" *ngIf="  addForm.controls['userName'].errors?.maxlength" class="error">Exceeded username length</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+        <div class="text-danger" *ngIf=" Submitted && addForm.controls.email.errors">
+            <div *ngIf="addForm.controls.email.errors?.required">Email address is required</div>
+            <div *ngIf="addForm.controls.email.errors?.email">Email must be a valid email address</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" id="password" [(ngModel)]="user.password" name="password"  [ngClass] = "{ 'is-invalid':Submitted && addForm.controls.password.errors}">
+        <div *ngIf='Submitted && addForm.controls.password.errors' class="text-danger">
+            <div *ngIf = 'addForm.controls.password.errors.required'>Password is required</div>
+            <div *ngIf='addForm.controls.password.errors?.pattern'>Enter Valid Password</div>
+          </div>
+    </div>
+    <div class="form-group ">
+        <input type="password" class="form-control" formControlName = "confirmPassword" placeholder="Confirm Password" [ngClass] = "{ 'is-invalid':Submitted && addForm.controls.confirmPassword.errors}"  />
+    
+      <div *ngIf='Submitted && addForm.controls.confirmPassword.errors'  class="text-danger">
+        <div *ngIf = 'addForm.controls.confirmPassword.errors.required'>
+          Confirm Password is required
+        </div>
+        <div *ngIf = 'addForm.controls.confirmPassword.errors.mustmatch'>
+          Passwords must match
+        </div>
+      </div>
+    </div>
+   
+
+    <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="tel" formControlName="mobile" class="form-control" id="mobile"  [(ngModel)]="user.mobile" name="mobile">
+        <div class="text-danger" *ngIf=" Submitted && addForm.controls['mobile'].errors">
+            <div class="text-danger" *ngIf=" addForm.controls['mobile'].errors?.required" class="error">provide mobile number</div>
+            <div class="text-danger" *ngIf="  addForm.controls['mobile'].errors?.pattern" class="error">Give Valid Mobile Number</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <textarea name="address" formControlName="address" id="address" [(ngModel)]="user.address" cols="10" rows="3" class="form-control"></textarea>
+        <div class="text-danger" *ngIf=" Submitted && addForm.controls['address'].errors">
+            <div class="text-danger" *ngIf=" addForm.controls['address'].errors?.required" class="error">provide Address</div>
+            <div class="text-danger" *ngIf="  addForm.controls['address'].errors?.minlength" class="error">Give minimum length</div>
+            <div class="text-danger" *ngIf="  addForm.controls['address'].errors?.maxlength" class="error">Exceeded Address length</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    
+</form>
+</div>
+</div>
+<footer>
+    <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+</footer>
+</body>

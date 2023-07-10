@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+body
+{
+    margin-top: 4%;
+    background-color: lightgray;
+    height: auto;
+    /* padding-bottom: 9%; */
+}
+.search
+{
+    width: 100%;
+    align-self: center;
+    
+}
+thead,tbody
+{
+    text-align: center;
+}
+.space
+{
+        margin: 5px;
+}
+thead
+{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+tbody
+{
+    font-size: 18px;
+    font-family: serif;
+}
+label
+{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h2
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 25px;
+}
+@media(max-width:768px) {
+  
+    #footer1{
+        text-align:left;
+    }
+    #footer2{
+        text-align:left;
+    }
+  }
+  #footer1 {
+    padding: 10px 0;
+    background-color: #101010;
+    color:#9d9d9d;
+    bottom: 0;
+    width: 100%;
+    position: static;
+  }
+#note
+{
+    color: red;
+}
+/* ---------------------------------------------------------------------------------------------------------- */
+
+a
+{
+    color: white;
+   
+}
+.add
+{
+    background-color: rgb(88, 146, 255);
+}
+
+
+#content
+{
+    min-height: 600px;
+}
+.img-thumbnail {
+    height: auto;
+    box-shadow: black;
+    border: 2px solid rgb(30, 163, 163);
+    margin-top: 10%;
+    
+}
+.img-thumbnail img {
+    height:250px;
+    width:100%;
+}
+
+@media screen and (max-width : 700px)
+{
+    .product{
+        font-size: 30px!important;
+        text-align: left;
+        
+    }
+    .jumbotron
+    {
+        margin-top: 10%;
+    }
+    
+}
+
+.jumbotron
+{
+    
+    background-color: black;
+    text-decoration: underline; 
+    position: relative;       
+}
+ .product{
+    font-size: 70px;
+    color: white;
+    font-family: Libre Baskerville;
+    text-align: center;
+}
+.caption
+{
+    padding: 10px;
+} 
+#address
+{
+    color: lightskyblue;
+}
+.button_slide {
+    color: #FFF;
+    /* border: 2px solid rgb(216, 2, 134); */
+    border-radius: 0px;
+    padding: 10px 20px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #D80286;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+  }
+  .slide_right:hover {
+    box-shadow: inset 400px 0 0 0 #D80286;
+  }
+
+  #hotelname
+  {
+      font-size: 25px;
+      font-family: Raleway;
+      font-weight: bolder;
+  }
+  #description
+  {
+      font-family: Source Sans Pro;
+      font-size: 20px;
+      font-weight: 600;
+  }
+#price
+{
+    font-family: Overpass;
+}
+.table
+{
+    display: table;
+}

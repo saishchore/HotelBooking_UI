@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<body>
+    
+
+<div class="container">
+<div class="col-md user-container">
+        <h2 class="text-center">ADD Booking Details</h2>
+        <form [formGroup]="addForm" (ngSubmit)="onSubmitforAdd()">
+            <!-- <div class="form-group">
+                <label for="bookingId">Booking ID:</label>
+                <input formControlName="bookingId" [(ngModel)]="addBooking.bookingId" placeholder="Enter BookingId"
+                    name="bookingId" class="form-control" id="bookingId" />
+                 <div class="text-danger" *ngIf=" Submitted && addForm.controls.bookingId.errors">give Booking id</div>
+            </div> -->
+
+            <div class="form-group">
+                <label for="bookedFrom">Booking From:</label>
+                <input type="date" formControlName="bookedFrom" [(ngModel)]="bookFrom" placeholder="Enter from date"
+                    name="bookedfrom" class="form-control" id="bookedfrom" />
+                <div class="text-danger" *ngIf=" Submitted && addForm.controls.bookedFrom.errors">Enter from date</div>
+            </div>
+            <div class="form-group">
+                <label for="bookedTo">Booked To:</label>
+                <input type="date" formControlName="bookedTo" [(ngModel)]="bookTo" placeholder="Enter to date"
+                    name="bookedto" class="form-control" id="bookedto" />
+                <div class="text-danger" *ngIf=" Submitted && addForm.controls.bookedTo.errors">Enter to date </div>
+            </div>
+            <div class="form-group">
+                <label for="noOfAdults">No Of Adults:</label>
+                <input formControlName="noOfAdults"  [(ngModel)]="addBooking.noOfAdults" placeholder="Enter no Of Adults"
+                    name="noOfAdults" class="form-control" id="noOfAdults" />
+                    <div *ngIf="Submitted && addForm.controls.noOfAdults.invalid" class="text-danger">
+                        <div class="text-danger" *ngIf=" addForm.controls.noOfAdults.errors?.required">Enter No. of Adults</div>
+                        <div class="text-danger" *ngIf=" addForm.controls.noOfAdults.errors?.min">Atleast 1 adult is required</div>
+                        <div class="text-danger" *ngIf=" addForm.controls.noOfAdults.errors?.max">Maximum adults can only be 2</div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="noOfChildren">No Of Children:</label>
+                <input formControlName="noOfChildren" (focusout)="onSearchChange($event)" [(ngModel)]="addBooking.noOfChildren"
+                    placeholder="Enter no Of Children" name="noOfChildren" class="form-control" id="noOfChildren" />
+                    <div *ngIf="Submitted && addForm.controls.noOfChildren.invalid" class="text-danger">
+                        <div class="text-danger" *ngIf=" addForm.controls.noOfChildren.errors?.required">Enter No. of Childrens</div>
+                        <div class="text-danger" *ngIf=" addForm.controls.noOfChildren.errors?.min">If you don't have children, provide 0</div>
+                        <div class="text-danger" *ngIf=" addForm.controls.noOfChildren.errors?.max">Maximum children can only be 2</div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="totalAmount">Total Amount:</label>
+                <input formControlName="totalAmount" [(ngModel)]="addBooking.totalamount" 
+                    name="totalAmount" class="form-control" id="totalAmount" />
+                <div class="text-danger" *ngIf=" Submitted && addForm.controls.totalAmount.errors">Enter amount</div>
+            </div>
+            
+            <button class="btn btn-success">Book</button>
+        </form>
+    </div>  
+</div>
+<footer>
+    <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+</footer>
+</body>

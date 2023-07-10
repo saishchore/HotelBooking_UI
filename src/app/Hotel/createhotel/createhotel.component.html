@@ -1,0 +1,102 @@
+
+<app-navbar></app-navbar>
+ 
+ <div class="container">
+  <h1>Enter the Hotel Details</h1>
+  
+  <form  [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="name"> Hotel Name</label>
+      <input  formControlName="name" type="text" class="form-control"  [(ngModel)]="hotel.hotelName" id="name"  name="name">
+      <div *ngIf="Submitted && addForm.controls.name.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.name.errors?.required">Enter Hotel Name</div>
+        <div class="text-danger" *ngIf=" addForm.controls.name.errors?.minlength">Give min length of 3</div>
+        <div class="text-danger" *ngIf=" addForm.controls.name.errors?.maxlength">Give max length of 20</div>
+      </div>
+   </div>
+  
+  
+   <div class="form-group">
+      <label for="city">City</label>
+      <input formControlName="city" type="text" class="form-control" [(ngModel)]="hotel.city" id="city" name="city">
+      <div *ngIf="Submitted && addForm.controls.city.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.city.errors?.required">Enter City Name</div>
+        <div class="text-danger" *ngIf=" addForm.controls.city.errors?.minlength">Give min length of 4</div>
+        <div class="text-danger" *ngIf=" addForm.controls.city.errors?.maxlength">Give max length of 20</div>
+      </div>
+    </div>
+  
+  
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input formControlName="address" type="text" class="form-control" id="address"  [(ngModel)]="hotel.address" name="address">
+      <div *ngIf="Submitted && addForm.controls.address.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.address.errors?.required">Enter The Address</div>
+        <div class="text-danger" *ngIf=" addForm.controls.address.errors?.minlength">Give min length of 5</div>
+        <div class="text-danger" *ngIf=" addForm.controls.address.errors?.maxlength">Give max length of 25</div>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label for="description">Hotel Description</label>
+      <input formControlName="description" type="text" class="form-control" id="description"  [(ngModel)]="hotel.description" name="description">
+      <div *ngIf="Submitted && addForm.controls.description.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.description.errors?.required">Please Enter Hotel Description</div>
+        <div class="text-danger" *ngIf=" addForm.controls.description.errors?.minlength">Give min length of 5</div>
+        <div class="text-danger" *ngIf=" addForm.controls.description.errors?.maxlength">Give max length of 150</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="avgRatePerDay">Average Rate Per Day</label>
+      <input formControlName="avgRatePerDay" type="text" class="form-control" id="avgRatePerDay"  [(ngModel)]="hotel.avgRatePerDay" name="avgRatePerDay">
+      <div *ngIf="Submitted && addForm.controls.avgRatePerDay.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.avgRatePerDay.errors?.required">Give the amount of Average Rate Per Day</div>
+        <div class="text-danger" *ngIf=" addForm.controls.avgRatePerDay.errors?.min">Minimum value should be 1</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input  formControlName="email" type="text" class="form-control" id="email"  [(ngModel)]="hotel.email" name="email">
+      <div *ngIf="Submitted && addForm.controls.email.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.email.errors?.required">Please Enter The Email</div>
+        <div class="text-danger" *ngIf=" addForm.controls.email.errors?.pattern">Email is not format</div>   
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone1">Phone1</label>
+      <input formControlName="phone1" type="text" class="form-control" id="phone1"  [(ngModel)]="hotel.phone1" name="phone1">
+      <div *ngIf="Submitted && addForm.controls.phone1.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.phone1.errors?.required">Enter the Mobile Number</div>
+        <div class="text-danger" *ngIf=" addForm.controls.phone1.errors?.pattern">wrong Number</div>   
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone2">Phone2</label>
+      <input formControlName="phone2" type="text" class="form-control"  [(ngModel)]="hotel.phone2"  id="phone2" name="phone2">
+      <div *ngIf="Submitted && addForm.controls.phone2.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.phone2.errors?.required">Enter the Mobile Number</div>
+        <div class="text-danger" *ngIf=" addForm.controls.phone2.errors?.pattern">wrong Number</div>   
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input formControlName="website" type="text" class="form-control" id="website"   [(ngModel)]="hotel.website" name="website">
+      <div *ngIf="Submitted && addForm.controls.website.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.website.errors?.required">Enter website name</div>
+        <div class="text-danger" *ngIf=" addForm.controls.website.errors?.pattern">wrong website || e.g.www.abx123.com</div>   
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image">Hotel Image</label>
+      <input formControlName="image" type="text" class="form-control" id="image"   [(ngModel)]="hotel.imageUrl" name="image">
+      <div *ngIf="Submitted && addForm.controls.website.invalid" class="text-danger">
+        <div class="text-danger" *ngIf=" addForm.controls.image.errors?.required">Enter Image Url</div>
+        <div class="text-danger" *ngIf=" addForm.controls.image.errors?.min">Image size should be 1 atleast</div>   
+      </div>
+    </div>    
+      <button class="btn btn-success" style="background-color: green;">Submit</button>
+    </form>
+    </div>
+    <footer>
+      <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+    </footer>

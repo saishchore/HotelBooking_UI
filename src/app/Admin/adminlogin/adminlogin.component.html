@@ -1,0 +1,55 @@
+ 
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <title>Bootstrap Sign up Form with Icons</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="adminlogin.component.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body>
+    
+    <app-navbar></app-navbar>
+
+    <div class="signup-form">
+        <form [formGroup]="addForm" (ngSubmit)="login()" >
+            <h2>Admin Login</h2>
+            <p>Please fill in this form to login!</p>
+            <hr>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </span>
+                    </div>
+                    <input formControlName="adminName" type="text" class="form-control" name="adminName" id="adminName" placeholder="Adminname"
+                        [(ngModel)]="alogin.adminName" required="required"/>
+                    
+                </div>
+                <div class="text-danger" *ngIf=" Submitted && addForm.controls.adminName.errors">Give Admin Name</div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </div>
+                    <input formControlName="password" type="password" class="form-control" name="Password" id="password" placeholder="password"
+                        [(ngModel)]="alogin.password" required="required"/>
+                        
+                </div>
+                <div class="text-danger" *ngIf=" Submitted && addForm.controls.password.errors">Provide Password</div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+            </div>
+        </form>
+    </div> 
+    <footer>
+        <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+      </footer>
+</body> 
+

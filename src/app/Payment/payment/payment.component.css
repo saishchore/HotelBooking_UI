@@ -1,0 +1,64 @@
+body
+{
+    background-color: lightgray;
+    padding-top: 5%;
+}
+.container
+{
+    margin-top: 11%;
+   
+}
+h3
+{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.row
+{
+    margin-top: 5%;
+    margin-left: 32%;
+    
+}
+@media screen and (max-width : 700px)
+{
+    .row
+    {
+        margin-left: 0%;
+    }   
+    
+}
+.content
+{
+    padding-bottom: 3%;
+}
+label
+{
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* .pay
+{
+    margin-left: 47%;
+} */
+h1
+{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+thead,tbody
+{
+    text-align: center;
+}
+.table
+{
+    display: table;
+}
+.border1
+{
+    border:2px solid black;
+}

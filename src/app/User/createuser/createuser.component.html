@@ -1,0 +1,135 @@
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <title>Bootstrap Sign up Form with Icons</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="createuser.component.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
+    <app-navbar></app-navbar>
+<div class="signup-form">
+    <form [formGroup]="addForm" (ngSubmit)="saveuser()">
+        <h2>Sign Up</h2>
+        <p>Please fill in this form to create an account!</p>
+        <hr>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-user"></span>
+                    </span>
+                </div>
+                <input formControlName="userName" type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="user.userName" >
+            </div>
+            <div class="text-danger" *ngIf=" Submitted && addForm.controls['userName'].errors">
+                <div class="text-danger" *ngIf=" addForm.controls['userName'].errors?.required" class="error">Provide UserName</div>
+                <div class="text-danger" *ngIf="  addForm.controls['userName'].errors?.minlength" class="error">Give minimum length</div>
+                <div class="text-danger" *ngIf="  addForm.controls['userName'].errors?.maxlength" class="error">Exceeded username length</div>
+            </div>        
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-paper-plane"></i>
+                    </span>
+                </div>
+                <input formControlName="email" type="email" class="form-control" name="email" placeholder="Email Address" [(ngModel)]="user.email" >
+            </div>
+            <div class="text-danger" *ngIf=" Submitted && addForm.controls.email.errors">
+                <div *ngIf="addForm.controls.email.errors?.required">Email address is required</div>
+                <div *ngIf="addForm.controls.email.errors?.email">Email must be a valid email address</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                </div>
+                <input formControlName="password" type="text" class="form-control" name="password" placeholder="Password" [ngClass] = "{ 'is-invalid':Submitted && addForm.controls.password.errors}" [(ngModel)]="user.password">
+            </div>
+            <div *ngIf='Submitted && addForm.controls.password.errors' class="text-danger">
+                <div *ngIf = 'addForm.controls.password.errors.required'>Password is required</div>
+                <div *ngIf='addForm.controls.password.errors?.pattern'>Enter Valid Password</div>
+              </div>
+        </div>
+        <div class="form-group ">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                        <i class="fa fa-check"></i>
+                    </span>
+                </div>
+          <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" formControlName = "confirmPassword" placeholder="Confirm Password" [ngClass] = "{ 'is-invalid':Submitted && addForm.controls.confirmPassword.errors}"  />
+          </div>
+          <div *ngIf='Submitted && addForm.controls.confirmPassword.errors'  class="text-danger">
+            <div *ngIf = 'addForm.controls.confirmPassword.errors?.required'>
+              Confirm Password is required
+            </div>
+            <div *ngIf = 'addForm.controls.confirmPassword.errors?.mustmatch'>
+              Passwords must match
+            </div>
+          </div>
+       
+      </div>
+        <!-- <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </div>
+                <input type="text" value="Customer" class="form-control" name="role" [(ngModel)]="user.role" required="required" disabled>
+            </div>
+        </div> -->
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-mobile"></i>
+                    </span>
+                </div>
+                <input formControlName="mobile" type="text" class="form-control" name="mobile" [(ngModel)]="user.mobile" placeholder="  Mobile Number"
+                    required="required">
+            </div>
+            <div class="text-danger" *ngIf=" Submitted && addForm.controls['mobile'].errors">
+                <div class="text-danger" *ngIf=" addForm.controls['mobile'].errors?.required" class="error">Provide Mobile Number</div>
+                <div class="text-danger" *ngIf="  addForm.controls['mobile'].errors?.pattern" class="error">Give Valid Mobile Number</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input formControlName="address" type="text" class="form-control" name="address" placeholder="Address" [(ngModel)]="user.address" required="required">
+            </div>
+            <div class="text-danger" *ngIf=" Submitted && addForm.controls['address'].errors">
+                <div class="text-danger" *ngIf=" addForm.controls['address'].errors?.required" class="error">Provide Address</div>
+                <div class="text-danger" *ngIf="  addForm.controls['address'].errors?.minlength" class="error">Give minimum length</div>
+                <div class="text-danger" *ngIf="  addForm.controls['address'].errors?.maxlength" class="error">Exceeded Address length</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-check-label"><input formControlName="terms" type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+            <div class="text-danger" *ngIf=" Submitted && addForm.controls.terms.errors">Select Terms and Conditions</div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+    </form>
+    <div class="text-center">Already have an account? <a routerLink="/login">Login here</a></div>
+</div>
+<footer>
+    <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+  </footer>
+</body>
+
+
+

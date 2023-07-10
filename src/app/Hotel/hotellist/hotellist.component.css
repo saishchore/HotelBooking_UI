@@ -1,0 +1,51 @@
+a
+{
+    color: white;
+   
+}
+.add
+{
+    background-color: blue;
+}
+
+/* .heart
+{
+    position: relative;
+    margin-left: 85px;
+    
+} */
+#content
+{
+    min-height: 600px;
+}
+
+/* .row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+  } */
+  .img-thumbnail {
+    height: 100%;
+    box-shadow: black;
+    border: 2px solid rgb(30, 163, 163);
+    
+  }
+  .img-thumbnail img {
+    height:250px;
+    width:100%;
+}
+#jumbotron
+{
+    background-color: black;
+}
+.product{
+    font-size: 70px;
+    color: white;
+    width: 100%;
+    
+}
+.caption
+{
+    padding: 10px;
+}
+
+

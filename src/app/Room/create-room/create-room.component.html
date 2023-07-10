@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<body>
+  
+<div class="container">
+    
+      <div class="col-md-6 container">
+        <h1 id="title">Add Room Here</h1>
+        <form [formGroup]="addForm" (ngSubmit)="saveRoom()">
+          <!-- <div class="form-group">
+            <label for="hotelId"> Hotel ID</label>
+            <input  formControlName="hotelId" type="number" class="form-control"  [(ngModel)]="room.hotelId" id="hotelId"  name="hotelId">
+            <div *ngIf="Submitted && addForm.controls.hotelId.invalid" class="text-danger">
+              <div class="text-danger" *ngIf=" addForm.controls.hotelId.errors?.required">Enter Hotel ID</div>
+              <div class="text-danger" *ngIf=" addForm.controls.hotelId.errors?.min">Give min value as 1</div>
+              
+            </div>
+          </div> -->
+            <div class="form-group">
+              <label for="available"> Availability</label>
+              <input  formControlName="available" type="text" class="form-control"  [(ngModel)]="room.available" id="available"  name="available">
+              <div *ngIf="Submitted && addForm.controls.available.invalid" class="text-danger">
+                <div class="text-danger" *ngIf=" addForm.controls.available.errors?.required">Enter Room Availability</div>
+                <div class="text-danger" *ngIf=" addForm.controls.available.errors?.minlength">Give min length of 4</div>
+                <div class="text-danger" *ngIf=" addForm.controls.available.errors?.maxlength">Give max length of 4</div>
+              </div>
+           </div>
+           <div class="form-group">
+            <label for="ratePerDay">Rated Per Day</label>
+            <input formControlName="ratePerDay" type="text" class="form-control" [(ngModel)]="room.ratePerDay" id="ratePerDay" name="ratePerDay">
+            <div *ngIf="Submitted && addForm.controls.ratePerDay.invalid" class="text-danger">
+              <div class="text-danger" *ngIf=" addForm.controls.ratePerDay.errors?.required">Enter rate per days</div>
+              <div class="text-danger" *ngIf=" addForm.controls.ratePerDay.errors?.min">Give min of 100</div>
+              <!-- <div class="text-danger" *ngIf=" addForm.controls.city.errors?.maxlength">Give max length of 20</div> -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="roomNo">Room Number</label>
+            <input formControlName="roomNo" type="number" class="form-control" [(ngModel)]="room.roomNo" id="roomNo" name="roomNo">
+            <div *ngIf="Submitted && addForm.controls.roomNo.invalid" class="text-danger">
+              <div class="text-danger" *ngIf=" addForm.controls.roomNo.errors?.required">Enter Room number</div>
+              <div class="text-danger" *ngIf=" addForm.controls.roomNo.errors?.minlength">Give min length of 1</div>
+               <div class="text-danger" *ngIf=" addForm.controls.roomNo.errors?.maxlength">Give max length of 3</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="roomType">Room Type</label>
+            <input formControlName="roomType" type="text" class="form-control" [(ngModel)]="room.roomType" id="roomType" name="roomType">
+            <div *ngIf="Submitted && addForm.controls.roomType.invalid" class="text-danger">
+              <div class="text-danger" *ngIf=" addForm.controls.roomType.errors?.required">Enter room type</div>
+              <div class="text-danger" *ngIf=" addForm.controls.roomType.errors?.minlength">Give min length of 3</div>
+              <div class="text-danger" *ngIf=" addForm.controls.roomType.errors?.maxlength">Give max length of 20</div>
+            </div>
+          </div>
+        <div class="text-center"><button class="btn btn-success " style="background-color: green;">Submit</button></div>
+      </form>
+      </div>
+</div>
+<footer>
+  <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+</footer>
+</body>

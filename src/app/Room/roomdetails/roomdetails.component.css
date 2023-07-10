@@ -1,0 +1,67 @@
+body
+{
+    background-color: lightgray;
+    padding-top: 3%; 
+    height: 1000px;  
+}
+.search
+{
+    
+    margin-top: 8%;
+}
+.space
+{
+    margin: 5px;
+}
+thead
+{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+tbody
+{
+    font-size: 19px;
+    text-align: center;
+    
+}
+.update
+{
+    margin-top: 4%;
+}
+@media(max-width:768px) {
+  
+    footer{
+        text-align:left;
+    }
+  }
+  footer {
+    /* margin-top: 10%; */
+    padding: 10px;
+    background-color: #101010;
+    color:#9d9d9d;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+
+  }
+  .createroom
+  {
+      background-color: rgb(15, 105, 179);
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+  }
+  .table
+  {
+      display: table;
+  }
+  #title
+{
+  text-align: center;
+  font-size: 30px;
+  font-family: Roboto Slab;
+}
+label
+{
+  font-family: Ubuntu;
+}

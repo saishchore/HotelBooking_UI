@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<body>
+    
+
+<div class="container">
+    <div class="border1 content" *ngIf="add===true">
+    <h3><u>Payments Details</u></h3>
+<form (ngSubmit)="addPayment()" >
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="form-group ">
+                <label for="bookingId">Booking Id:</label>
+                <input [(ngModel)]="bookingId" name="bookingId" class="form-control" id="bookingId" disabled />
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="form-group">
+                <label for="amount">Total Amount:</label>
+                <input [(ngModel)]="amount" name="amount" class="form-control" id="amount" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="text-center"><button class="btn btn-dark pay">Make Payment</button></div>
+           
+</form>
+</div>
+
+<div *ngIf="details===true" class="table-responsive">
+    <h1>Thank You For Payment.....</h1>
+<table class="table  table-bordered table-striped table-hover" *ngIf="paymentDetails">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Booking Id</th>
+            <th scope="col">Payment Id</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{paymentDetails.bookingId}}</th>
+            <th scope="row">{{paymentDetails.paymentId}}</th>
+            <th scope="row">{{paymentDetails.amount}}</th>
+            <th scope="row"><button (click)="checkBooking(paymentDetails.bookingId)" class="btn btn-success">Check Booking</button></th>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div *ngIf="bookingStatus===true" class="table-responsive">
+    <h3>Booking Details</h3> 
+<table class="table  table-bordered table-striped table-hover" *ngIf="booking">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Booking Id</th>
+            <th scope="col">Booked from</th>
+            <th scope="col">Booked To</th>
+            <th scope="col">No Of Adults</th>
+            <th scope="col">No Of Children</th>
+            <th scope="col">Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{booking.bookingId}}</th>
+            <th scope="row">{{booking.bookedFrom}}</th>
+            <th scope="row">{{booking.bookedTo}}</th>
+            <th scope="row">{{booking.noOfAdults}}</th>
+            <th scope="row">{{booking.noOfChildren}}</th>
+            <th scope="row">{{booking.totalamount}}</th>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</body>

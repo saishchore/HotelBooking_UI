@@ -1,0 +1,135 @@
+<head>
+  <link rel="stylesheet" href="roomdetails.component.css">
+</head>
+<app-navbar></app-navbar>
+
+<body>
+  <div class="container">
+    <div class="input-group mb-3 search" *ngIf="searchStatus===true"> <input name="search" id="search" [(ngModel)]="search" type="text" class="form-control" placeholder="Search..">
+      <div class="input-group-append"><button class="btn btn-primary"><i class="bi bi-search"></i></button></div>
+    </div>
+    </div>
+
+<!-- Create Room Button -->
+<div class="container">
+  <button [routerLink]="['/createroom',hotelId]" *ngIf="adminId && details===true" class="btn createroom float-right">Create Room</button>
+</div>
+    
+<div class="container update">
+<div *ngIf="update===true">
+<form [formGroup]="addForm" (ngSubmit)="editRoom()">
+    <h1 id="title">Update The Room Details Here</h1>
+  <div class="form-group">
+    <label for="ratePerDay">Rate Per Day For The Room</label>
+    <input formControlName="ratePerDay" type="text" class="form-control" id="ratePerDay"  [(ngModel)]="room.ratePerDay" name="ratePerDay">
+    <div *ngIf="Submitted && addForm.controls.ratePerDay.invalid" class="text-danger">
+      <div class="text-danger" *ngIf=" addForm.controls.ratePerDay.errors?.required">Enter Rate Per day</div>
+      <div class="text-danger" *ngIf=" addForm.controls.ratePerDay.errors?.min">Give min value as 1</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="roomNo">Room Number</label>
+    <input formControlName="roomNo" type="text" class="form-control" id="description"  [(ngModel)]="room.roomNo" name="roomNo">
+    <div *ngIf="Submitted && addForm.controls.roomNo.invalid" class="text-danger">
+      <div class="text-danger" *ngIf=" addForm.controls.roomNo.errors?.required">Enter Room Number</div>
+      <div class="text-danger" *ngIf=" addForm.controls.roomNo.errors?.min">Give min value of 1</div>
+      <div class="text-danger" *ngIf=" addForm.controls.roomNo.errors?.max">Give max value of 4</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="roomType">Type of Room</label>
+    <input formControlName="roomType" type="text" class="form-control" id="roomType"  [(ngModel)]="room.roomType" name="roomType">
+    <div *ngIf="Submitted && addForm.controls.roomType.invalid" class="text-danger">
+      <div class="text-danger" *ngIf=" addForm.controls.roomType.errors?.required">Enter Room type</div>
+      <div class="text-danger" *ngIf=" addForm.controls.roomType.errors?.minlength">Give min length of 3</div>
+      <div class="text-danger" *ngIf=" addForm.controls.roomType.errors?.maxlength">Give max length of 9</div>
+    </div>
+  </div>
+  <input type="hidden" class="form-control" id="hotelId"  [(ngModel)]="hotelId" name="hotelId" >
+  <div class="text-center"><button class="btn btn-primary">Submit</button></div>  
+</form>
+</div>
+</div>
+
+<!-- Room Search Form -->
+<div class="container centered" *ngIf="!adminId">
+  <form (ngSubmit)="onSearch()">
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+          <div class="form-group">
+              <label for="bookFrom">Book From</label>
+              <input type="date" min="{{minDate}}"  class="form-control" id="bookFrom" [(ngModel)]="dates.bookFrom" name="bookFrom">
+              <!-- <div class="text-danger" *ngIf=" Submitted && addForm.controls.bookFrom.errors">Give date</div> -->
+          </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+            <label for="bookTo">Book To</label>
+            <input type="date" min="{{minDate}}"  class="form-control" id="bookTo" [(ngModel)]="dates.bookTo" name="bookTo">
+            <!-- <div class="text-danger" *ngIf=" Submitted && addForm.controls.bookTo.errors">Give date</div> -->
+        </div>
+      </div>
+    </div>
+    <div class="text-center"><button class="btn btn-info">Search</button></div>
+    
+  </form>
+  </div>
+
+<div class="container table-responsive" *ngIf ="details===true">
+  <table class="table table-bordered table-hover table-striped" *ngIf="room1">
+    <thead class="thead-dark">
+    <tr>
+      <!-- <th>Available</th> -->
+      <th>Rate Per Day</th>
+      <th>Room No</th>
+      <th>Room Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of room1 | filter:search">
+      <!-- <td>{{r.available}}</td> -->
+      <td>{{r.ratePerDay}}</td>
+      <td>{{r.roomNo}}</td>
+      <td>{{r.roomType}}</td>
+      <td >
+        <button (click)='remove(r.roomId)' *ngIf="adminId" class="btn btn-outline-danger space">Delete</button>
+        <button (click)='detail(r.roomId)' *ngIf="adminId" class="btn btn-outline-dark space">Update details</button>
+        <!-- <button [routerLink]="['/addbookingdetails',hotelId,r.roomId,r.ratePerDay]" *ngIf="!adminId" class="btn btn-outline-info">Book Room</button> -->
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+<br>
+<!-- Rooms Availability Table -->
+<div class="container table-responsive" *ngIf ="hotelRoom===true">
+  <h4>*Rooms Available From {{dates.bookFrom}} To {{dates.bookTo}}</h4>
+  <table class="table table-bordered table-hover table-striped" *ngIf="roomsAvailable">
+    <thead class="thead-dark">
+    <tr>
+      <th>Rate Per Day</th>
+      <th>Room No</th>
+      <th>Room Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of roomsAvailable | filter:search">
+      <td>{{r.ratePerDay}}</td>
+      <td>{{r.roomNo}}</td>
+      <td>{{r.roomType}}</td>
+      <td >
+        <button [routerLink]="['/addbookingdetails',hotelId,r.roomId,r.ratePerDay,dates.bookFrom,dates.bookTo]" *ngIf="!adminId" class="btn btn-outline-info">Book Room</button>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+<footer>
+  <p style="text-align: center; width: 100%;">Copyright &copy;Travelodge. All Rights Reserved  |  Contact Us: +91 9966666699</p>	
+</footer>
+</body>
+
+

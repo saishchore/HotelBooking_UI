@@ -1,0 +1,69 @@
+
+<app-navbar></app-navbar>
+<div class="background">
+    <div class="container">
+        <div class="header">
+            <h1>ADMIN</h1>
+        </div>
+        <div class="wrapper clearfix">
+
+            <div class="section">
+
+                <p><img src="assets/admin-settings.png" alt="admin"></p>
+                <h2>Welcome {{adminName | titlecase}}</h2>
+
+            </div>
+        </div>
+    </div>
+    <div class="container panel">
+
+        <div class="row text-center" id="item_list">
+            <div class="col-sm-3">
+                <a routerLink="/view">
+                    <div class="thumbnail">
+                        <img src="assets/users.jpg" alt="users" class="image rounded-corners">
+                        <div class="overlay">Users</div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-sm-3">
+                <a href="/viewhotel">
+                    <div class="thumbnail">
+                        <img src="assets/hotels.jpg" alt="hotel" class="image rounded-corners">
+                        <div class="overlay">Hotels</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a href="/createhotel">
+                    <div class="thumbnail">
+                        <img src="https://www.gannett-cdn.com/-mm-/f85d715f4ef18e245988237e803cdef2db1daf68/c=0-255-4256-2656/local/-/media/USATODAY/test/2013/10/25/1382729502000-160857233.jpg" alt="add hotel" class="image rounded-corners">
+                        <div class="overlay">Add Hotels</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-sm-3">
+                <a routerLink="/bookingdetails">
+                    <div class="thumbnail">
+                        <img src="assets/booking.png" alt="booking" class="image rounded-corners">
+                        <div class="overlay">Bookings</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<footer>
+    <div class="container" style="text-align: center;">
+
+        <p>Copyright &copy;Travelodge. All Rights Reserved | Contact Us: +91 9966666699</p>
+
+    </div>
+</footer>

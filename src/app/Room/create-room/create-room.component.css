@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+body
+{
+    margin-top: 4%;
+    background-color: lightgray;
+    padding-top: 5%;  
+}
+@media(max-width:768px) {
+  
+    footer{
+        text-align:left;
+    }
+  }
+  footer {
+    padding: 10px 0;
+    background-color: #101010;
+    color:#9d9d9d;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+  }
+#title
+{
+  text-align: center;
+  font-size: 30px;
+  font-family: Roboto Slab;
+}
+label
+{
+  font-family: Ubuntu;
+}
